@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neelesh Maharjan | Portfolio</title>
+<meta name="description" content="Personal portfolio and term project status report.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-deep: #0a1f1a;
+    --green: #0f2a24;
+    --green-raised: #163a31;
+    --line: #2a5246;
+    --ivory: #ede6d3;
+    --muted: #a9b8ae;
+    --brass: #c9a24b;
+    --plate: #f3efe2;
+    --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+    --body: "DM Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--green);
+    color: var(--ivory);
+    font-family: var(--body);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+  a { color: var(--brass); text-underline-offset: 3px; }
+  a:hover { color: var(--ivory); }
+  :focus-visible { outline: 3px solid var(--brass); outline-offset: 3px; border-radius: 4px; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 1.5rem; }
+
+  /* Header */
+  header.top { border-bottom: 1px solid var(--line); background: var(--green-deep); }
+  header.top .wrap { display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; padding-bottom: 1rem; gap: 1rem; flex-wrap: wrap; }
+  .brand { font-family: var(--display); font-weight: 800; font-size: 1.15rem; color: var(--ivory); text-decoration: none; }
+  nav ul { display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
+  nav a { color: var(--muted); text-decoration: none; font-weight: 500; }
+  nav a:hover { color: var(--brass); }
+
+  /* Hero */
+  .hero { padding: 5rem 0 4.5rem; background:
+      radial-gradient(900px 400px at 85% -10%, rgba(201,162,75,.12), transparent 60%),
+      var(--green); }
+  .plate {
+    display: inline-block;
+    background: var(--plate);
+    color: #12261f;
+    border: 5px solid #101a16;
+    border-radius: 14px;
+    padding: .35rem 1.6rem .5rem;
+    box-shadow: 0 0 0 2px var(--brass), 0 18px 40px rgba(0,0,0,.45);
+    position: relative;
+    text-align: center;
+    animation: roll-in .8s cubic-bezier(.2,.8,.2,1) both;
+  }
+  .plate::before, .plate::after {
+    content: ""; position: absolute; top: 50%; width: 9px; height: 9px; border-radius: 50%;
+    background: #8d8a7d; transform: translateY(-50%);
+  }
+  .plate::before { left: 9px; }
+  .plate::after { right: 9px; }
+  .plate .reg { font-family: var(--display); font-weight: 800; font-size: clamp(2rem, 7vw, 3.6rem); letter-spacing: .06em; line-height: 1.1; display: block; }
+  .plate .sub { font-size: .8rem; font-weight: 700; letter-spacing: .12em; display: block; margin-top: -.1rem; }
+  @keyframes roll-in { from { opacity: 0; transform: translateX(-60px); } to { opacity: 1; transform: none; } }
+  .hero h1 { font-family: var(--display); font-weight: 700; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.12; margin: 2.2rem 0 1rem; max-width: 18ch; }
+  .hero p.lead { font-size: 1.2rem; color: var(--muted); max-width: 56ch; margin: 0 0 2rem; }
+  .btns { display: flex; gap: .9rem; flex-wrap: wrap; }
+  .btn { display: inline-block; padding: .7rem 1.3rem; border-radius: 999px; font-weight: 700; text-decoration: none; }
+  .btn.primary { background: var(--brass); color: var(--green-deep); }
+  .btn.primary:hover { background: var(--ivory); color: var(--green-deep); }
+  .btn.ghost { border: 1.5px solid var(--brass); color: var(--brass); }
+  .btn.ghost:hover { background: var(--brass); color: var(--green-deep); }
+
+  /* Sections */
+  section { padding: 4.5rem 0; border-top: 1px solid var(--line); }
+  section.alt { background: var(--green-deep); }
+  h2 { font-family: var(--display); font-weight: 800; font-size: clamp(1.7rem, 4vw, 2.4rem); margin: 0 0 1.5rem; line-height: 1.15; }
+  h3 { font-family: var(--display); font-weight: 700; font-size: 1.25rem; margin: 0 0 .5rem; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .intro { max-width: 62ch; }
+
+  /* About: interests as a ruled list */
+  .interests { list-style: none; margin: 0; padding: 0; }
+  .interests li { padding: .85rem 0; border-bottom: 1px solid var(--line); display: flex; gap: .9rem; align-items: baseline; }
+  .interests li:first-child { border-top: 1px solid var(--line); }
+  .interests b { font-family: var(--display); min-width: 7.5rem; color: var(--brass); }
+
+  /* Skills */
+  .skill-group { margin-bottom: 1.6rem; }
+  .skill-group h3 { color: var(--brass); font-size: 1rem; }
+  .chips { display: flex; flex-wrap: wrap; gap: .5rem; padding: 0; margin: 0; list-style: none; }
+  .chips li { background: var(--green-raised); border: 1px solid var(--line); border-radius: 6px; padding: .3rem .8rem; font-weight: 500; }
+
+  /* Project */
+  .project-head { display: flex; justify-content: space-between; align-items: end; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+  .project-head p { margin: 0; max-width: 60ch; color: var(--muted); }
+  .status { border-left: 4px solid var(--brass); padding: .4rem 0 .4rem 1.2rem; margin: 2rem 0; max-width: 70ch; }
+  .status p { margin: 0; }
+  .features { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  .feature { padding: 1.5rem; background: var(--green-raised); }
+  .feature:nth-child(1), .feature:nth-child(2) { border-bottom: 1px solid var(--line); }
+  .feature:nth-child(odd) { border-right: 1px solid var(--line); }
+  .feature p { margin: 0; color: var(--muted); }
+  .deliver { margin: 0; padding: 0; list-style: none; counter-reset: step; }
+  .deliver li { padding: .75rem 0 .75rem 2.4rem; border-bottom: 1px solid var(--line); position: relative; }
+  .deliver li::before { counter-increment: step; content: counter(step); position: absolute; left: 0; top: .7rem; width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--brass); color: var(--green-deep); font-weight: 700; font-size: .85rem; display: grid; place-items: center; }
+
+  /* Team */
+  .team-box { background: var(--green-raised); border: 1px solid var(--line); border-radius: 10px; padding: 2rem; max-width: 640px; }
+  .team-box p { margin-top: 0; color: var(--muted); }
+
+  footer { border-top: 1px solid var(--line); background: var(--green-deep); padding: 2rem 0; color: var(--muted); font-size: .95rem; }
+
+  @media (max-width: 760px) {
+    .two, .features { grid-template-columns: 1fr; }
+    .feature:nth-child(odd) { border-right: 0; }
+    .feature:not(:last-child) { border-bottom: 1px solid var(--line); }
+    .interests li { flex-direction: column; gap: .1rem; }
+    .hero { padding-top: 3.5rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .plate { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">Neelesh Maharjan</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#background">Background</a></li>
+        <li><a href="#project">Term project</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <div class="hero">
+    <div class="wrap">
+      <div class="plate" role="img" aria-label="License plate reading your name">
+        <span class="reg">Neelesh Maharjan</span>
+      </div>
+      <h1>I design the systems that keep a business running.</h1>
+      <p class="lead">I'm a student building practical software, from database design and software architecture to the features people use every day. I work with functional, structural, and behavioral system models to design clear, maintainable solutions. Below is a bit about me and a status report on my term project this semester.</p>
+      <div class="btns">
+        <a class="btn primary" href="#project">See my term project</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT (HW2: name + interests) -->
+  <section id="about">
+    <div class="wrap two">
+      <div>
+        <h2>About me</h2>
+        <p class="intro">Hi, I'm Neelesh Maharjan, a student at Grand Valley State University interested in designing efficient, maintainable and scalable software systems. I am working toward building strong skills in system modeling, software architecture, and AI-driven features such as RAG and chatbots.</p>
+      </div>
+      <div>
+        <h3>Interests</h3>
+        <ul class="interests">
+          <li><b>System modeling</b><span>I am interested in designing system models — functional, structural, and behavioral — using UML diagrams, and in making those systems efficient through good coupling, cohesion, and design patterns, so programmers can use them as a blueprint for implementation.</span></li>
+          <li><b>Software architecture</b><span>I am interested in software architecture, particularly in how architectural decisions shape a system's scalability, maintainability, and long-term quality.</span></li>
+          <li><b>AI-driven software</b><span>I am interested in incorporating AI-driven features, such as RAG and chatbots, into software systems.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- BACKGROUND (HW2: technical background) -->
+  <section id="background" class="alt">
+    <div class="wrap">
+      <h2>Technical background</h2>
+      <p class="intro" style="margin-bottom:2rem">I have experience with various programming languages, frameworks, databases, development tools, and software engineering practices.</p>
+      <div class="two">
+        <div>
+          <div class="skill-group">
+            <h3>Backend</h3>
+            <ul class="chips"><li>C#</li><li>ASP.NET Web API</li><li>Dapper</li><li>Entity Framework</li><li>Dependency injection</li><li>ONION architecture</li><li>Unit testing</li><li>Integration testing</li><li>Logging</li><li>Object-oriented programming</li><li>OOAD</li><li>Design patterns</li><li>Data structures and algorithms</li></ul>
+          </div>
+          <div class="skill-group">
+            <h3>Database</h3>
+            <ul class="chips"><li>Microsoft SQL Server</li><li>MySQL</li><li>Oracle</li><li>PostgreSQL</li><li>Database design</li><li>Relational model</li><li>Business constraint normalization</li><li>Cardinality</li><li>Views</li><li>Functions</li><li>Stored procedures</li></ul>
+          </div>
+        </div>
+        <div>
+          <div class="skill-group">
+            <h3>Frontend</h3>
+            <ul class="chips"><li>React.js</li><li>React Hooks</li><li>Redux</li><li>Fluent UI</li><li>Ant Design</li><li>TypeScript</li><li>JavaScript (ES6+)</li></ul>
+          </div>
+          <div class="skill-group">
+            <h3>Tools</h3>
+            <ul class="chips"><li>GitHub</li><li>Postman</li><li>Swagger</li><li>Jira</li><li>Confluence</li><li>Microsoft Azure</li><li>Azure DevOps</li><li>Microsoft Excel</li><li>Agile</li><li>SonarQube</li></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TERM PROJECT -->
+  <section id="project">
+    <div class="wrap">
+      <div class="project-head">
+        <div>
+          <h2>Term project: AutoPlex Motors</h2>
+          <p>A dealership management system that covers how a car dealer sells vehicles, buys inventory, collects payments and keeps its books.</p>
+        </div>
+      </div>
+
+      <h3>The problem</h3>
+      <p class="intro">A dealership juggles a lot of moving parts: customers, salespeople, vendors, vehicles, invoices, payments and bank activity. When those live in separate spreadsheets, sales get recorded wrong, nobody is sure what a customer still owes, and inventory costs get lost. I set out to design one system where each piece of information is entered once and stays accurate.</p>
+
+      <div class="status">
+        <p><strong>Status report:</strong> This semester I took the project from a set of user stories through requirements, a full database design and the first phases of object design. The foundation is in place, and the next step is building features on top of it one small piece at a time.</p>
+      </div>
+
+      <h3 style="margin-bottom:1rem">What the system lets people do</h3>
+      <div class="features">
+        <div class="feature">
+          <h3>Manage sales invoices</h3>
+          <p>A salesperson creates, edits and voids invoices tied to one vehicle and one customer, so every sale is recorded and mistakes can be corrected.</p>
+        </div>
+        <div class="feature">
+          <h3>Calculate totals automatically</h3>
+          <p>Price, taxes, fees and discounts roll up into an invoice total and a balance due, with no manual math.</p>
+        </div>
+        <div class="feature">
+          <h3>Track payments</h3>
+          <p>An accountant records partial and full payments, and the balance updates, so the dealership always knows who still owes money.</p>
+        </div>
+        <div class="feature">
+          <h3>Record vehicle purchases</h3>
+          <p>A purchasing manager logs the VIN, stock number, vendor and cost, and the vehicle is added to inventory with its acquisition cost captured once.</p>
+        </div>
+      </div>
+
+      <h3 style="margin: 2.5rem 0 .5rem">What I built this semester</h3>
+      <ol class="deliver">
+        <li><strong>User stories and requirements.</strong> I wrote small, sequenced user stories and converted them into testable "shall" requirements with IDs.</li>
+        <li><strong>Database design.</strong> I modeled the system as an ER diagram in PlantUML covering banking, accounting and ledger, people, sales, and purchasing and inventory.</li>
+        <li><strong>PostgreSQL scripts.</strong> I generated the table definitions with auto-incrementing keys, plus sample data with valid foreign keys for testing.</li>
+        <li><strong>Object design.</strong> I created CRC cards and class diagrams, starting with master data (customers, employees, vendors) and then the sales invoice phase.</li>
+        <li><strong>Incremental delivery plan.</strong> I broke the work into small merges to the main branch, so early features never depend on tables that don't exist yet.</li>
+      </ol>
+
+      <h3 style="margin: 2.5rem 0 .5rem">What I learned</h3>
+      <p class="intro">Planning in small, ordered pieces saves rework. Getting the data model right before writing features made every later step clearer, and writing requirements in a strict format exposed gaps I would have missed otherwise.</p>
+
+      <p style="margin-top:2rem"><a class="btn ghost" href="https://github.com/blessedneelesh/GVSU-CIS641-FullStackDeveloper">View the project on GitHub</a></p>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <!-- <section id="team" class="alt">
+    <div class="wrap">
+      <h2>Our team</h2>
+      <div class="team-box">
+        <p>This project was built with my team. See their work and the team's own site here.</p>
+        <a class="btn primary" href="https://YOUR-TEAM-NAME.github.io">Go to the team page</a>
+      </div>
+    </div>
+  </section> -->
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Neelesh Maharjan. Built with HTML and CSS and hosted on GitHub Pages.</span>
+  </div>
+</footer>
+
+</body>
+</html>
